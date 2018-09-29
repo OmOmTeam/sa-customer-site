@@ -41,4 +41,9 @@ router.get('/support_feedback', function(req, res, next) {
   res.render('./public_info/support_feedback', { title: 'Feedback' });
 });
 
+// Define GET method for root part
+router.get('/support_callback', function(req, res, next) {
+  res.render('./public_info/support_callback', { title: 'Callback' });
+});
+
 module.exports = router;
