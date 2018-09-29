@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+/* Add a gray background color and some padding to the footer */
+footer {
+  background-color: #a6a6a6;
+  padding: 25px;
+}
