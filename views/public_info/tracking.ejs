@@ -1,5 +1,27 @@
 <% include components/header %>
 
-<%= title %>
+<div style="padding-top: 100px" class="container text-center">
+  <h3>Track Order</h3><br>
+</div><br>
 
-<% include components/footer %>
+<form class="form-horizontal" action="/action_page.php">
+ <div class="form-group">
+   <label class="control-label col-sm-offset-3 col-sm-2" for="number">Order Number:</label>
+   <div class="col-sm-3">
+     <input type="input" class="form-control" id="number" placeholder="1234567890">
+   </div>
+ </div>
+ <div class="form-group">
+   <div class="col-sm-offset-5 col-sm-10">
+     <button type="submit" class="btn btn-success">Track</button>
+   </div>
+ </div>
+</form>
+
+<footer style="position: absolute; bottom: 0; width: 100%;" class="container text-center">
+  <p>ACME Inc.</p>
+  <p>2000 - 2018 </p>
+</footer>
+
+</body>
+</html>

@@ -54,4 +54,8 @@ router.get('/signup', function(req, res, next) {
   res.render('./public_info/signup', {title: 'Sign up'});
 });
 
+router.get('/tracking', function(req, res, next) {
+  res.render('./public_info/tracking', {title: 'tracking'});
+});
+
 module.exports = router;
