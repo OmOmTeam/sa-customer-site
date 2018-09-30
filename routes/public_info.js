@@ -46,4 +46,12 @@ router.get('/support_callback', function(req, res, next) {
   res.render('./public_info/support_callback', { title: 'Callback' });
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('./public_info/login', {title: 'Login'});
+});
+
+router.get('/signup', function(req, res, next) {
+  res.render('./public_info/signup', {title: 'Sign up'});
+});
+
 module.exports = router;
