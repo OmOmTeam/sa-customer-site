@@ -58,4 +58,12 @@ router.get('/tracking', function(req, res, next) {
   res.render('./public_info/tracking', {title: 'tracking'});
 });
 
+router.get('/signup', function(req, res, next) {
+  res.render('./public_info/signup', {title: 'tracking'});
+});
+
+router.get('/login', function(req, res, next) {
+  res.render('./public_info/login', {title: 'tracking'});
+});
+
 module.exports = router;
