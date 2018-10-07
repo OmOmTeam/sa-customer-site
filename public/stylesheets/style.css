@@ -1,6 +1,7 @@
 body {
   padding-top: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-bottom: 50px;
 }
 
 a {
@@ -11,6 +12,10 @@ a {
 footer {
   background-color: #a6a6a6;
   padding: 25px;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
 }
 
 /* Remove the navbar's default margin-bottom and rounded borders */
