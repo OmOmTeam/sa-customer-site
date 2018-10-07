@@ -1,0 +1,57 @@
+<% include components/header %>
+
+<div style="padding-top: 50px" class="container text-center">
+  <h3>Create Order</h3><br>
+</div><br>
+
+<form class="form-horizontal" action="#">
+ <div class="form-group">
+   <label class="control-label col-sm-offset-3 col-sm-2" for="sender-name">Your Name:</label>
+   <div class="col-sm-3">
+     <input type="input" class="form-control" id="sender-name" placeholder="Your Name">
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="control-label col-sm-offset-3 col-sm-2" for="recipient-name">Recipient Name:</label>
+   <div class="col-sm-3">
+     <input type="input" class="form-control" id="recipient-name" placeholder="Your Name">
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="control-label col-sm-offset-3 col-sm-2" for="dispatch-address">Dispatch Address:</label>
+   <div class="col-sm-3">
+     <input type="input" class="form-control" id="dispatch-place" placeholder="Dispatch Address">
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="control-label col-sm-offset-3 col-sm-2" for="destination-address">Destination Address:</label>
+   <div class="col-sm-3">
+     <input type="input" class="form-control" id="destination-address" placeholder="Destination Address">
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="control-label col-sm-offset-3 col-sm-2" for="weight">Weight in kg:</label>
+   <div class="col-sm-3">
+     <input type="number" class="form-control" id="weight" placeholder="Weight in kg">
+   </div>
+ </div>
+ <div class="checkbox">
+    <label><input type="checkbox" value="" id="urgent">Urgent</label>
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox" value="" id="first-class">First Class Parcel</label>
+  </div>
+ <div class="form-group">
+   <div class="col-sm-offset-5 col-sm-1">
+     <button type="submit" class="btn btn-success">Reserve</button>
+   </div>
+ </div>
+</form>
+
+<footer style="position: absolute; bottom: 0; width: 100%;" class="container text-center">
+  <p>ACME Inc.</p>
+  <p>2000 - 2018 </p>
+</footer>
+
+</body>
+</html>
