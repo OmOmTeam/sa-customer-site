@@ -3,24 +3,28 @@
 <div class="container text-center" style="padding-top: 100px">
   <h3>Sign up</h3><br>
 </div><br>
-
-<form class="form-horizontal" action="/action_page.php">
+<% if (typeof(message) == 'string') { %>
+  <div class="text-center">
+    <h2><%= message %></h2>
+  </div>
+<% } %>
+<form class="form-horizontal" action="/signup" method="post">
   <div class="form-group">
     <label class="control-label col-sm-offset-3 col-sm-2" for="name">Name:</label>
     <div class="col-sm-3">
-      <input type="input" class="form-control" id="name" placeholder="Enter name">
+      <input type="input" class="form-control" name="name" placeholder="Enter name">
     </div>
   </div>
  <div class="form-group">
    <label class="control-label col-sm-offset-3 col-sm-2" for="email">Email:</label>
    <div class="col-sm-3">
-     <input type="email" class="form-control" id="email" placeholder="Enter email">
+     <input type="email" class="form-control" name="email" placeholder="Enter email">
    </div>
  </div>
  <div class="form-group">
    <label class="control-label col-sm-offset-3 col-sm-2" for="pwd">Password:</label>
    <div class="col-sm-3">
-     <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+     <input type="password" class="form-control" name="pwd" placeholder="Enter password">
    </div>
  </div>
  <div class="form-group">

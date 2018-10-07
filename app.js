@@ -6,8 +6,11 @@ var logger = require('morgan');
 
 var usersRouter = require('./routes/users');
 var publicInfoRouter = require('./routes/public_info');
+var db = require('./models');
 
 var app = express();
+
+app.db = db.sequelize;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

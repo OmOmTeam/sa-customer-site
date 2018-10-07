@@ -54,6 +54,20 @@ router.get('/signup', function(req, res, next) {
   res.render('./public_info/signup', {title: 'Sign up'});
 });
 
+router.post('/signup', function(req, res, next) {
+  req.app.db.model('User').create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.pwd
+  }).then(() => {
+    res.render('./public_info/login',
+      {message: 'Account created. You can log in now.'});
+  }).catch((err) => {
+    res.render('./public_info/signup',
+      {message: 'User with such email already exists'});
+  });
+});
+
 router.get('/tracking', function(req, res, next) {
   res.render('./public_info/tracking', {title: 'tracking'});
 });
