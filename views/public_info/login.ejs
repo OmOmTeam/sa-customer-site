@@ -13,7 +13,7 @@
                 url: 'http://80.93.182.76:5000/', // url where to submit the request TODO
                 type : "POST", // type of action POST || GET
                 dataType : 'json', // data type
-                data : $("#form").serialize(), // post data || get data
+                data : $("#form-log-in").serialize(), // post data || get data
                 success : function(result) {
                     // you can see the result from the console
                     // tab of the developer tools
@@ -30,7 +30,7 @@
 
 </script>
 
-<form class="form-horizontal" action="#" method="post" id="form">
+<form class="form-horizontal" action="#" method="post" id="form-log-in">
  <div class="form-group">
    <label class="control-label col-sm-offset-3 col-sm-2" for="email">Email:</label>
    <div class="col-sm-3">

@@ -4,7 +4,33 @@
   <h3>Sign up</h3><br>
 </div><br>
 
-<form class="form-horizontal" action="/action_page.php" method="post">
+<script>
+    $(document).ready(function(){
+        // click on button submit
+        $("#signup").on('click', function(){
+            // send ajax
+            $.ajax({
+                url: 'http://80.93.182.76:5000/', // url where to submit the request TODO
+                type : "POST", // type of action POST || GET
+                dataType : 'json', // data type
+                data : $("#form-sign-up").serialize(), // post data || get data
+                success : function(result) {
+                    // you can see the result from the console
+                    // tab of the developer tools
+                    console.log('success path');
+                    console.log(result);
+                },
+                error: function(xhr, resp, text) {
+                    console.log('error path')
+                    console.log(xhr, resp, text);
+                }
+            })
+        });
+    });
+
+</script>
+
+<form class="form-horizontal" action="#" method="post" id="form-sign-up">
   <div class="form-group">
     <label class="control-label col-sm-offset-3 col-sm-2" for="name">Name:</label>
     <div class="col-sm-3">
@@ -25,7 +51,7 @@
  </div>
  <div class="form-group">
    <div class="col-sm-offset-5 col-sm-1">
-     <button type="submit" class="btn btn-success">Sign up</button>
+     <button type="submit" class="btn btn-success" id="signup">Sign up</button>
    </div>
  </div>
  <div class="col-sm-offset-5 col-sm-3">
