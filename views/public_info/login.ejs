@@ -17,9 +17,11 @@
                 success : function(result) {
                     // you can see the result from the console
                     // tab of the developer tools
+                    console.log('success path');
                     console.log(result);
                 },
                 error: function(xhr, resp, text) {
+                    console.log('error path')
                     console.log(xhr, resp, text);
                 }
             })
