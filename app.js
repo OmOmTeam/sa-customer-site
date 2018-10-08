@@ -1,27 +1,38 @@
+// Dependencies
+// External libraries
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Our own libraries
+var session = require('./lib/session');
+
+// Routes
 var usersRouter = require('./routes/users');
 var publicInfoRouter = require('./routes/public_info');
+
+// Database
 var db = require('./models');
 
+// App initialization
 var app = express();
-
 app.db = db.sequelize;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Middleware setuo
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session.middleware);
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes setup
 app.use('/', publicInfoRouter);
 app.use('/users', usersRouter);
 
@@ -33,9 +44,7 @@ app.use(function(req, res, next) {
       'status': 404,
       'stack': ''
     }
-  })
-  //next({"Error": "Page not found :()"});
-  //createError(404, 'Strange message')
+  });
 });
 
 // error handler
