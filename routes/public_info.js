@@ -53,6 +53,7 @@ router.get('/login', function(req, res, next) {
 });
 
 // TODO: Use JWT?
+// TODO: Hash password
 router.post('/login', function(req, res, next) {
   // Lookup for a user in DB
   req.app.db.model('User').findOne({where: {email: req.body.email}})
@@ -118,6 +119,7 @@ router.get('/signup', function(req, res, next) {
 });
 
 // TODO: send information to the data cluster
+// TODO: hash password
 router.post('/signup', function(req, res, next) {
   // Create a user in DB
   req.app.db.model('User').create({
