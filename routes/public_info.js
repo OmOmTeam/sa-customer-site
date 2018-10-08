@@ -3,53 +3,73 @@ var router = express.Router();
 
 var helpers = require('../lib/helpers');
 
+// Middleware that checks user session
+router.use((req, res, next) => {
+  req.session = {};
+  if (req.cookies.user && req.cookies.token) {
+    isValid(req.cookies.token, req.cookies.user, req.app.db, (result) => {
+      if (result) {
+        req.session.user = req.cookies.user;
+        req.session.isActive = true;
+        next();
+      } else {
+        req.session.isActive = false;
+        next();
+      }
+    });
+  } else {
+    req.session.isActive = false;
+    next();
+  }
+});
+
 // Define GET method for root part
 router.get('/', function(req, res, next) {
-  res.render('./public_info/index');
+  res.render('./public_info/index', { authorized: req.session.isActive });
 });
 
 // Define GET method for root part
 router.get('/company_about', function(req, res, next) {
-  res.render('./public_info/company_about', { title: 'About Company' });
+  res.render('./public_info/company_about', { authorized: req.session.isActive });
 });
 
 // Define GET method for root part
 router.get('/company_news', function(req, res, next) {
-  res.render('./public_info/company_news', { title: 'Our News' });
+  res.render('./public_info/company_news', { authorized: req.session.isActive });
 });
 
 // Define GET method for root part
 router.get('/shipping_calculator', function(req, res, next) {
-  res.render('./public_info/shipping_calculator', { title: 'Shipment Cost Calculator' });
+  res.render('./public_info/shipping_calculator', { authorized: req.session.isActive });
 });
 
 // Define GET method for root part
 router.get('/shipping_info', function(req, res, next) {
-  res.render('./public_info/shipping_info', { title: 'Shipping Info' });
+  res.render('./public_info/shipping_info', { authorized: req.session.isActive });
 });
 
 // Define GET method for root part
 router.get('/shipping_prices', function(req, res, next) {
-  res.render('./public_info/shipping_prices', { title: 'Pricings' });
+  res.render('./public_info/shipping_prices', { authorized: req.session.isActive });
 });
 
 // Define GET method for root part
 router.get('/support_contact', function(req, res, next) {
-  res.render('./public_info/support_contact', { title: 'Support Contacts' });
+  res.render('./public_info/support_contact', { authorized: req.session.isActive });
 });
 
 // Define GET method for root part
 router.get('/support_feedback', function(req, res, next) {
-  res.render('./public_info/support_feedback', { title: 'Feedback' });
+  res.render('./public_info/support_feedback', { authorized: req.session.isActive });
 });
 
 // Define GET method for root part
 router.get('/support_callback', function(req, res, next) {
-  res.render('./public_info/support_callback', { title: 'Callback' });
+  res.render('./public_info/support_callback', { authorized: req.session.isActive });
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('./public_info/login', {title: 'Login'});
+  res.render('./public_info/login', { authorized: req.session.isActive });
 });
 
 // TODO: Use JWT?
@@ -94,25 +114,19 @@ router.post('/login', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
   // If token exists
-  if (req.cookies.user && req.cookies.token) {
-    isValid(req.cookies.token, req.cookies.user, req.app.db, (result) => {
-      if (result) {
-        req.app.db.model('Token').destroy({
-          where: {
-            token: req.cookies.token,
-            email: req.cookies.user
-          }
-        })
-        .then(() => {
-          res.redirect('/');
-        })
-        .catch((err) => {
-          console.log(err);
-          res.redirect('/');
-        })
-      } else {
-        res.redirect('/');
+  if (req.session.isActive) {
+    req.app.db.model('Token').destroy({
+      where: {
+        token: req.cookies.token,
+        email: req.cookies.user
       }
+    })
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect('/');
     });
   } else {
     res.redirect('/');
@@ -141,19 +155,13 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.get('/tracking', function(req, res, next) {
-  res.render('./public_info/tracking', {title: 'tracking'});
+  res.render('./public_info/tracking', { authorized: req.session.isActive });
 });
 
 router.get('/test_login', function(req, res, next) {
   // If token exists
-  if (req.cookies.user && req.cookies.token) {
-    isValid(req.cookies.token, req.cookies.user, req.app.db, (result) => {
-      if (result) {
-        res.send('User: ' + req.cookies.user + '<br>Token: ' + req.cookies.token);
-      } else {
-        res.send('You have not been authenticated.');
-      }
-    });
+  if (req.session.isActive) {
+    res.send('User: ' + req.cookies.user + '<br>Token: ' + req.cookies.token);
   } else {
     res.send('You have not been authenticated.');
   }
