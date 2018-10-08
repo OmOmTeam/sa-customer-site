@@ -92,6 +92,33 @@ router.post('/login', function(req, res, next) {
     })
 });
 
+router.get('/logout', function(req, res, next) {
+  // If token exists
+  if (req.cookies.user && req.cookies.token) {
+    isValid(req.cookies.token, req.cookies.user, req.app.db, (result) => {
+      if (result) {
+        req.app.db.model('Token').destroy({
+          where: {
+            token: req.cookies.token,
+            email: req.cookies.user
+          }
+        })
+        .then(() => {
+          res.redirect('/');
+        })
+        .catch((err) => {
+          console.log(err);
+          res.redirect('/');
+        })
+      } else {
+        res.redirect('/');
+      }
+    });
+  } else {
+    res.redirect('/');
+  }
+});
+
 router.get('/signup', function(req, res, next) {
   res.render('./public_info/signup', {title: 'Sign up'});
 });
@@ -118,25 +145,46 @@ router.get('/tracking', function(req, res, next) {
 });
 
 router.get('/test_login', function(req, res, next) {
+  // If token exists
   if (req.cookies.user && req.cookies.token) {
-    req.app.db.model('Token').findOne({where: {token: req.cookies.token}})
-      .then(token => {
-        if (token) {
-          if (Date.parse(token.expires) > Date.now()) {
-            res.send('User: ' + req.cookies.user + '<br>Token: ' + req.cookies.token);
-          } else {
-            res.send('Token has already expired');
-          }
-        } else {
-          res.send('There is no such token');
-        }
-      })
-      .catch(err => {
-        res.send(err);
-      })
+    isValid(req.cookies.token, req.cookies.user, req.app.db, (result) => {
+      if (result) {
+        res.send('User: ' + req.cookies.user + '<br>Token: ' + req.cookies.token);
+      } else {
+        res.send('You have not been authenticated.');
+      }
+    });
   } else {
-    res.send('You have not been authenticated.')
+    res.send('You have not been authenticated.');
   }
-})
+});
+
+function isValid(token, user, db, callback) {
+  // Lookup for the token in the database
+  db.model('Token').findOne({where: {token: token}})
+
+    .then(tokenObj => {
+      // If token found
+      if (tokenObj) {
+        // Check validity of token
+        if (user == tokenObj.email &&
+            Date.parse(tokenObj.expires) > Date.now()) {
+          console.log('User: ' + user + '<br>Token: ' + token);
+          callback(true);
+        } else {
+          console.log('Token has already expired');
+          callback(false);
+        }
+      } else {
+        console.log('There is no such token');
+        callback(false);
+      }
+    })
+
+    .catch(err => {
+      console.log(err);
+      callback(false);
+    });
+}
 
 module.exports = router;
