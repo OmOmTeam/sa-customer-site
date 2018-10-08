@@ -52,6 +52,7 @@ router.get('/login', function(req, res, next) {
   res.render('./public_info/login', {title: 'Login'});
 });
 
+// TODO: Use JWT?
 router.post('/login', function(req, res, next) {
   // Lookup for a user in DB
   req.app.db.model('User').findOne({where: {email: req.body.email}})
@@ -95,6 +96,7 @@ router.get('/signup', function(req, res, next) {
   res.render('./public_info/signup', {title: 'Sign up'});
 });
 
+// TODO: send information to the data cluster
 router.post('/signup', function(req, res, next) {
   // Create a user in DB
   req.app.db.model('User').create({
