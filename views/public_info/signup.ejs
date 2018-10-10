@@ -7,40 +7,52 @@
   <div class="text-center">
     <h2><%= message %></h2>
   </div>
-<% } %>
-<form class="form-horizontal" action="/signup" method="post">
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="name">Name:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" name="name" placeholder="Enter name">
+  <% } %>
+  <form class="form-horizontal" action="/signup" method="post">
+    <div class="form-group">
+      <label class="control-label col-sm-offset-3 col-sm-2" for="first_name">First name*:</label>
+      <div class="col-sm-3">
+        <input type="input" class="form-control" name="first_name" required placeholder="Enter first name">
+      </div>
     </div>
-  </div>
- <div class="form-group">
-   <label class="control-label col-sm-offset-3 col-sm-2" for="email">Email:</label>
-   <div class="col-sm-3">
-     <input type="email" class="form-control" name="email" placeholder="Enter email">
-   </div>
- </div>
- <div class="form-group">
-   <label class="control-label col-sm-offset-3 col-sm-2" for="pwd">Password:</label>
-   <div class="col-sm-3">
-     <input type="password" class="form-control" name="pwd" placeholder="Enter password">
-   </div>
- </div>
- <div class="form-group">
-   <div class="col-sm-offset-5 col-sm-1">
-     <button type="submit" class="btn btn-success" id="signup">Sign up</button>
-   </div>
- </div>
- <div class="col-sm-offset-5 col-sm-3">
-   <p>Already have an account? <a href="login">Log in</a></p><br>
- </div>
-</form>
+    <div class="form-group">
+      <label class="control-label col-sm-offset-3 col-sm-2" for="last_name">Last name*:</label>
+      <div class="col-sm-3">
+        <input type="input" class="form-control" name="last_name" required placeholder="Enter last name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-offset-3 col-sm-2" for="patron">Patronymic:</label>
+      <div class="col-sm-3">
+        <input type="input" class="form-control" name="patron" placeholder="Enter patronymic">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-offset-3 col-sm-2" for="email">Email*:</label>
+      <div class="col-sm-3">
+        <input type="email" class="form-control" name="email" required placeholder="Enter email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-offset-3 col-sm-2" for="pwd">Password*:</label>
+      <div class="col-sm-3">
+        <input type="password" class="form-control" name="pwd" required placeholder="Enter password">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-5 col-sm-1">
+        <button type="submit" class="btn btn-success" id="signup">Sign up</button>
+      </div>
+    </div>
+    <div class="col-sm-offset-5 col-sm-3">
+      <p>Already have an account? <a href="login">Log in</a></p><br>
+    </div>
+  </form>
 
-<footer style="position: absolute; bottom: 0; width: 100%;" class="container text-center">
-  <p>ACME Inc.</p>
-  <p>2000 - 2018 </p>
-</footer>
+  <footer style="position: absolute; bottom: 0; width: 100%;" class="container text-center">
+    <p>ACME Inc.</p>
+    <p>2000 - 2018 </p>
+  </footer>
 
 </body>
 </html>

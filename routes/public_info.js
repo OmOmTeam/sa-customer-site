@@ -75,8 +75,7 @@ router.post('/login', function(req, res, next) {
             // Give cookie with token to user
             res.cookie('user', user.email, {expires: expirationDate});
             res.cookie('token', token, {expires: expirationDate});
-            res.render('./public_info/login',
-              {message: 'Success!'});
+            res.redirect('/');
           }).catch((err) => {
             console.log(err);
             res.render('./public_info/login',
@@ -122,18 +121,28 @@ router.get('/signup', function(req, res, next) {
 // TODO: hash password
 router.post('/signup', function(req, res, next) {
   // Create a user in DB
-  req.app.db.model('User').create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.pwd
-  }).then(() => {
-    // Say user about successful creation
-    res.render('./public_info/login',
+  req.app.db.model('Person').create({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    patrinymic: req.body.patron
+  }).then((pers_resp) => {
+    req.app.db.model('User').create({
+      email: req.body.email,
+      password: req.body.pwd,
+      person_id: pers_resp.dataValues.id
+    }).then((resp) => {
+      // Say user about successful creation
+      res.render('./public_info/login',
       {message: 'Account created. You can log in now.'});
-  }).catch((err) => {
-    res.render('./public_info/signup',
+    }).catch((err) => {
+      res.render('./public_info/signup',
       {message: 'User with such email already exists'});
-  });
+    });
+  }).catch((err) => {
+    console.log(err);
+      res.render('./public_info/signup',
+      {message: 'Something went wrong, say admin about it'});
+  })
 });
 
 router.get('/tracking', function(req, res, next) {
