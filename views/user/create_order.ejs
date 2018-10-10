@@ -1,190 +1,217 @@
 <% include components/header %>
 
-<div style="padding-top: 100px" class="container text-center">
-  <h3>Create Order</h3><br>
-</div><br>
+<div class="container">
+  <div style="padding-top: 100px" class="text-center">
+    <h3>Create Order</h3><br>
+  </div><br>
 
-<form class="form-horizontal text-left" action="/create_order" method="post">
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="sender-name">Your Full Name:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="sender-name" placeholder="Your Full Name" required>
+  <form class="form-horizontal text-left" action="/user/create_order" method="post">
+    <hr />
+    <div class="row text-center">
+      <h4>Sender Info</h4>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="recipient-name">Recipient Full Name:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="recipient-name" placeholder="Your Full Name" required>
+    <hr />
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="sender-name">First Name*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="sender-name" name="sender[name][first_name]" placeholder="Your First Name" value="<%= person.first_name %>" required>
+      </div>
     </div>
-  </div>
-
-  <div role="separator" class="divider"></div>
-  <div class="col-sm-offset-2 col-sm-2"><h4>Dispatch Address:</h4></div></br>
-  <div role="separator" class="divider"></div></br>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dispatch-address-country">Country:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dispatch-address-country" placeholder="Country" required>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="sender-name">Last Name*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="sender-name" name="sender[name][last_name]" placeholder="Your Last Name" value="<%= person.last_name %>" required>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dispatch-address-region">Region:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dispatch-address-region" placeholder="Region" required>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="sender-name">Patronymic:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="sender-name" name="sender[name][patronymic]" placeholder="Your Patronymic" value="<%= person.patronymic %>">
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dispatch-address-city">City:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dispatch-address-city" placeholder="City" required>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dispatch-address-country">Country*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-country" name="sender[address][country]" placeholder="Country" value="<%= address.country %>" required>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dispatch-address-street">Street:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dispatch-address-street" placeholder="Street" required>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dispatch-address-region">Region*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-region" name="sender[address][region]" placeholder="Region" value="<%= address.region %>" required>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dispatch-address-building">Building:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dispatch-address-building" placeholder="Building Number" required>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dispatch-address-city">City*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-city" name="sender[address][city]" placeholder="City" value="<%= address.city %>" required>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dispatch-address-additional">Additional Info:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dispatch-address-additional" placeholder="Additional Info if any" required>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dispatch-address-street">Street*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-street" name="sender[address][street]" placeholder="Street" value="<%= address.street %>" required>
+      </div>
     </div>
-  </div>
-
-  <div role="separator" class="divider"></div>
-  <div class="col-sm-offset-2 col-sm-2"><h4>Destination Address:</h4></div></br>
-  <div role="separator" class="divider"></div></br>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dest-address-country">Country:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dest-address-country" placeholder="Country">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dispatch-address-building">Building*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-building" name="sender[address][building_number]" placeholder="Building Number" value="<%= address.building_number %>" required>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dest-address-region">Region:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dest-address-region" placeholder="Region">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dispatch-address-additional">Additional Info:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-additional" name="sender[address][additional_info]" placeholder="Additional Info if any" value="<%= address.additional_info %>">
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dest-address-city">City:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dest-address-city" placeholder="City">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="non-req-info-sender-phone">Your Phone:</label>
+      <div class="col-sm-4">
+        <input type="tel" class="form-control" id="non-req-info-sender-phone" name="sender[phone]" placeholder="Your Phone" value="<%= person.phone %>">
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dest-address-street">Street:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dest-address-street" placeholder="Street">
+    <hr />
+    <div class="row text-center">
+      <h4>Recipient Info</h4>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dest-address-building">Building:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dest-address-building" placeholder="Building Number">
+    <hr />
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="recipient-name">First Name*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="recipient-name" name="recipient[name][first_name]" placeholder="Your First Name" value="" required>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="dest-address-additional">Additional Info:</label>
-    <div class="col-sm-3">
-      <input type="input" class="form-control" id="dest-address-additional" placeholder="Additional Info if any">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="recipient-name">Last Name*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="recipient-name" name="recipient[name][last_name]" placeholder="Your Last Name" value="" required>
+      </div>
     </div>
-  </div>
-
-  <div role="separator" class="divider"></div>
-  <div class="col-sm-offset-2 col-sm-2"><h4>Parcel:</h4></div></br>
-  <div role="separator" class="divider"></div></br>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="parcel-weight">Weight:</label>
-    <div class="col-sm-1">
-      <input type="number" class="form-control" id="parcel-weight" placeholder="1">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="recipient-name">Patronymic:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="recipient-name" name="recipient[name][patronymic]" placeholder="Your Patronymic" value="">
+      </div>
     </div>
-    <label class="control-label col-sm-1" for="parcel-weight">kg</label>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="parcel-width">Width:</label>
-    <div class="col-sm-1">
-      <input type="number" class="form-control" id="parcel-width" placeholder="1">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="recipient-address-country">Country*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="recipient-address-country" name="recipient[address][country]" placeholder="Country" value="" required>
+      </div>
     </div>
-    <label class="control-label col-sm-1" for="parcel-width">meters</label>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="parcel-height">Height:</label>
-    <div class="col-sm-1">
-      <input type="number" class="form-control" id="parcel-height" placeholder="1">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dest-address-region">Region*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-region" name="recipient[address][region]" placeholder="Region" value="" required>
+      </div>
     </div>
-    <label class="control-label col-sm-1" for="parcel-height">meters</label>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="parcel-length">Lenght:</label>
-    <div class="col-sm-1">
-      <input type="number" class="form-control" id="parcel-length" placeholder="1">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dest-address-city">City*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-city" name="recipient[address][city]" placeholder="City" value="" required>
+      </div>
     </div>
-    <label class="control-label col-sm-1" for="parcel-length">meters</label>
-  </div>
-
-  <div role="separator" class="divider"></div>
-  <div class="col-sm-offset-2 col-sm-2"><h4>Delivery:</h4></div></br>
-  <div role="separator" class="divider"></div></br>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="delivery-type">Type:</label>
-    <div class="col-sm-3">
-      <label class="radio-inline"><input type="radio" name="optradio" id="delivery-type-normal" checked>Normal</label>
-      <label class="radio-inline"><input type="radio" name="optradio" id="delivery-type-express">Express</label>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dest-address-street">Street*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-street" name="recipient[address][street]" placeholder="Street" value="" required>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="delivery-type">Pickup from:</label>
-    <div class="col-sm-3">
-      <label class="radio-inline"><input type="radio" name="optradio1" id="delivery-pickup-warehouse" checked>Warehouse</label>
-      <label class="radio-inline"><input type="radio" name="optradio1" id="delivery-pickup-building">Delivery to Building</label>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dest-address-building">Building*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-building" name="recipient[address][building_number]" placeholder="Building Number" value="" required>
+      </div>
     </div>
-  </div>
-  <div role="separator" class="divider"></div>
-  <div class="col-sm-offset-2 col-sm-2"><h4>Non-required Info:</h4></div></br>
-  <div role="separator" class="divider"></div></br>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="non-req-info-sender-phone">Your Phone:</label>
-    <div class="col-sm-3">
-      <input type="tel" class="form-control" id="non-req-info-sender-phone" placeholder="Your Phone">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="dest-address-additional">Additional Info:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-additional" name="recipient[address][additional_info]" placeholder="Additional Info if any" value="">
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-offset-3 col-sm-2" for="non-req-info-recipient-phone">Recipient Phone:</label>
-    <div class="col-sm-3">
-      <input type="tel" class="form-control" id="non-req-info-recipient-phone" placeholder="Recipient Phone">
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="non-req-info-recipient-phone">Recipient Phone:</label>
+      <div class="col-sm-4">
+        <input type="tel" class="form-control" id="non-req-info-recipient-phone" name="recipient[phone]" placeholder="Recipient Phone" value="">
+      </div>
     </div>
-  </div>
-
-  <div role="separator" class="divider"></div>
-  <div class="col-sm-offset-2 col-sm-2"><h4>Additional Services:</h4></div></br>
-  <div role="separator" class="divider"></div></br>
-  <div class="form-group">
-    <div class="checkbox col-sm-offset-5 col-sm-3">
-      <label><input type="checkbox" value="" id="add-services-sms">SMS-notifications about delivery</label>
+    <hr />
+    <div class="row text-center">
+      <h4>Parcel Parameters</h4>
     </div>
-  </div>
-  <div class="form-group">
-    <div class="checkbox col-sm-offset-5 col-sm-3">
-      <label><input type="checkbox" value="" id="add-services-letter">Attached letter</label>
+    <hr />
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="parcel-weight">Weight*:</label>
+      <div class="col-sm-1">
+        <input type="number" class="form-control" id="parcel-weight" name="parcel[weight]" placeholder="1" value="" required>
+      </div>
+      <label class="control-label col-sm-1" for="parcel-weight">kg</label>
     </div>
-  </div>
-  <div class="form-group">
-    <div class="checkbox col-sm-offset-5 col-sm-3">
-      <label><input type="checkbox" value="" id="add-services-contents">List of contents signed by operator</label>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="parcel-width">Width*:</label>
+      <div class="col-sm-1">
+        <input type="number" class="form-control" id="parcel-width" name="parcel[width]" placeholder="1" value="" required>
+      </div>
+      <label class="control-label col-sm-1" for="parcel-width">meters</label>
     </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-5 col-sm-2">
-      <button type="submit" class="btn btn-success">Create Order</button>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="parcel-height">Height*:</label>
+      <div class="col-sm-1">
+        <input type="number" class="form-control" id="parcel-height" name="parcel[height]" placeholder="1" value="" required>
+      </div>
+      <label class="control-label col-sm-1" for="parcel-height">meters</label>
     </div>
-  </div>
-</form>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="parcel-length">Lenght*:</label>
+      <div class="col-sm-1">
+        <input type="number" class="form-control" id="parcel-length" name="parcel[length]" placeholder="1" value="" required>
+      </div>
+      <label class="control-label col-sm-1" for="parcel-length">meters</label>
+    </div>
+    <hr />
+    <div class="row text-center">
+      <h4>Delivery Details</h4>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="delivery-type">Type*:</label>
+      <div class="col-sm-4">
+        <label class="radio-inline"><input type="radio" name="delivery[type]" value="normal" id="delivery-type-normal" checked>Normal</label>
+        <label class="radio-inline"><input type="radio" name="delivery[type]" value="express" id="delivery-type-express">Express</label>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-6" for="delivery-type">Pickup from*:</label>
+      <div class="col-sm-4">
+        <label class="radio-inline"><input type="radio" name="delivery[pickup]" value="warehouse" id="delivery-pickup-warehouse" checked>Warehouse</label>
+        <label class="radio-inline"><input type="radio" name="delivery[pickup]" value="building" id="delivery-pickup-building">Delivery to Building</label>
+      </div>
+    </div>
+    <hr />
+    <div class="row text-center">
+      <h4>Additional Services</h4>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <div class="checkbox col-sm-offset-5 col-sm-6">
+        <label><input type="checkbox" value="" id="add-services-sms" name="additional[sms]">SMS-notifications about delivery</label>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="checkbox col-sm-offset-5 col-sm-6">
+        <label><input type="checkbox" value="" id="add-services-letter" name="additional[letter]">Attached letter</label>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="checkbox col-sm-offset-5 col-sm-6">
+        <label><input type="checkbox" value="" id="add-services-contents" name="additional[contents]">List of contents signed by operator</label>
+      </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <button type="submit" class="btn btn-success center-block">Create Order</button>
+    </div>
+  </form>
+</div>
 <% include components/footer %>
