@@ -32,6 +32,16 @@ router.post('/create_order', function(req, res, next) {
   req.app.db.model('User').findOne({where: {email: req.session.user}})
     .then((user) => {
       if (!req.body.additional) req.body.additional = {};
+      if (!user.country) {
+        user.update({
+          country: req.body.order.sender_country,
+          region: req.body.order.sender_region,
+          city: req.body.order.sender_city,
+          street: req.body.order.sender_street,
+          building_number: req.body.order.sender_building_number,
+          additional_info: req.body.order.sender_additional_info
+        });
+      }
       req.app.db.model('Order').create({
         ...req.body.order,
         owner_id: user.id,
@@ -60,7 +70,7 @@ router.get('/manage_orders', function(req, res, next) {
         .then((orders) => {
           res.render('./user/manage_orders', {
             authorized: req.session.isActive,
-            orders 
+            orders
           });
         });
     });
