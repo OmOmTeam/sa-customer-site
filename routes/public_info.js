@@ -121,28 +121,14 @@ router.get('/signup', function(req, res, next) {
 // TODO: hash password
 router.post('/signup', function(req, res, next) {
   // Create a user in DB
-  req.app.db.model('Person').create({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    patrinymic: req.body.patron
-  }).then((pers_resp) => {
-    req.app.db.model('User').create({
-      email: req.body.email,
-      password: req.body.pwd,
-      person_id: pers_resp.dataValues.id
-    }).then((resp) => {
-      // Say user about successful creation
-      res.render('./public_info/login',
-      {message: 'Account created. You can log in now.'});
-    }).catch((err) => {
-      res.render('./public_info/signup',
-      {message: 'User with such email already exists'});
-    });
+  req.app.db.model('User').create({...req.body.user}).then((resp) => {
+    // Say user about successful creation
+    res.render('./public_info/login',
+    {message: 'Account created. You can log in now.'});
   }).catch((err) => {
-    console.log(err);
-      res.render('./public_info/signup',
-      {message: 'Something went wrong, say admin about it'});
-  })
+    res.render('./public_info/signup',
+    {message: 'User with such email already exists'});
+  });
 });
 
 router.get('/tracking', function(req, res, next) {
