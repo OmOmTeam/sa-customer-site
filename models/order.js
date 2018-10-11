@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     recipient_additional_info: DataTypes.STRING,
     pkg_height: DataTypes.FLOAT,
     pkg_length: DataTypes.FLOAT,
-    pkg_wigth: DataTypes.FLOAT,
+    pkg_width: DataTypes.FLOAT,
     pkg_weight: DataTypes.FLOAT,
     express: DataTypes.BOOLEAN,
     door_to_door: DataTypes.BOOLEAN,

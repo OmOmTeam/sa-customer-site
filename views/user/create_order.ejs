@@ -12,63 +12,51 @@
     </div>
     <hr />
     <div class="row form-group">
-      <label class="control-label col-sm-6" for="sender-name">First Name*:</label>
+      <label class="control-label col-sm-6" for="sender-name">Full Name*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="sender-name" name="sender[name][first_name]" placeholder="Your First Name" value="<%= person.first_name %>" required>
-      </div>
-    </div>
-    <div class="row form-group">
-      <label class="control-label col-sm-6" for="sender-name">Last Name*:</label>
-      <div class="col-sm-4">
-        <input type="input" class="form-control" id="sender-name" name="sender[name][last_name]" placeholder="Your Last Name" value="<%= person.last_name %>" required>
-      </div>
-    </div>
-    <div class="row form-group">
-      <label class="control-label col-sm-6" for="sender-name">Patronymic:</label>
-      <div class="col-sm-4">
-        <input type="input" class="form-control" id="sender-name" name="sender[name][patronymic]" placeholder="Your Patronymic" value="<%= person.patronymic %>">
+        <input type="input" class="form-control" id="sender-name" name="order[sender_name]" placeholder="Your Patronymic" value="<%= user.last_name %> <%= user.first_name %> <%= user.patronymic %>" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dispatch-address-country">Country*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dispatch-address-country" name="sender[address][country]" placeholder="Country" value="<%= address.country %>" required>
+        <input type="input" class="form-control" id="dispatch-address-country" name="order[sender_country]" placeholder="Country" value="<%= user.country %>" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dispatch-address-region">Region*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dispatch-address-region" name="sender[address][region]" placeholder="Region" value="<%= address.region %>" required>
+        <input type="input" class="form-control" id="dispatch-address-region" name="order[sender_region]" placeholder="Region" value="<%= user.region %>" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dispatch-address-city">City*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dispatch-address-city" name="sender[address][city]" placeholder="City" value="<%= address.city %>" required>
+        <input type="input" class="form-control" id="dispatch-address-city" name="order[sender_city]" placeholder="City" value="<%= user.city %>" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dispatch-address-street">Street*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dispatch-address-street" name="sender[address][street]" placeholder="Street" value="<%= address.street %>" required>
+        <input type="input" class="form-control" id="dispatch-address-street" name="order[sender_street]" placeholder="Street" value="<%= user.street %>" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dispatch-address-building">Building*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dispatch-address-building" name="sender[address][building_number]" placeholder="Building Number" value="<%= address.building_number %>" required>
+        <input type="input" class="form-control" id="dispatch-address-building" name="order[sender_building_number]" placeholder="Building Number" value="<%= user.building_number %>" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dispatch-address-additional">Additional Info:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dispatch-address-additional" name="sender[address][additional_info]" placeholder="Additional Info if any" value="<%= address.additional_info %>">
+        <input type="input" class="form-control" id="dispatch-address-additional" name="order[sender_additional_info]" placeholder="Additional Info if any" value="<%= user.additional_info %>">
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="non-req-info-sender-phone">Your Phone:</label>
       <div class="col-sm-4">
-        <input type="tel" class="form-control" id="non-req-info-sender-phone" name="sender[phone]" placeholder="Your Phone" value="<%= person.phone %>">
+        <input type="tel" class="form-control" id="non-req-info-sender-phone" name="order[sender_phone]" placeholder="Your Phone" value="<%= user.phone %>">
       </div>
     </div>
     <hr />
@@ -77,63 +65,51 @@
     </div>
     <hr />
     <div class="row form-group">
-      <label class="control-label col-sm-6" for="recipient-name">First Name*:</label>
+      <label class="control-label col-sm-6" for="recipient-name">Full Name*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="recipient-name" name="recipient[name][first_name]" placeholder="Your First Name" value="" required>
-      </div>
-    </div>
-    <div class="row form-group">
-      <label class="control-label col-sm-6" for="recipient-name">Last Name*:</label>
-      <div class="col-sm-4">
-        <input type="input" class="form-control" id="recipient-name" name="recipient[name][last_name]" placeholder="Your Last Name" value="" required>
-      </div>
-    </div>
-    <div class="row form-group">
-      <label class="control-label col-sm-6" for="recipient-name">Patronymic:</label>
-      <div class="col-sm-4">
-        <input type="input" class="form-control" id="recipient-name" name="recipient[name][patronymic]" placeholder="Your Patronymic" value="">
+        <input type="input" class="form-control" id="recipient-name" name="order[recipient_name]" placeholder="Your First Name" value="" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="recipient-address-country">Country*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="recipient-address-country" name="recipient[address][country]" placeholder="Country" value="" required>
+        <input type="input" class="form-control" id="recipient-address-country" name="order[recipient_country]" placeholder="Country" value="" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dest-address-region">Region*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dest-address-region" name="recipient[address][region]" placeholder="Region" value="" required>
+        <input type="input" class="form-control" id="dest-address-region" name="order[recipient_region]" placeholder="Region" value="" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dest-address-city">City*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dest-address-city" name="recipient[address][city]" placeholder="City" value="" required>
+        <input type="input" class="form-control" id="dest-address-city" name="order[recipient_city]" placeholder="City" value="" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dest-address-street">Street*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dest-address-street" name="recipient[address][street]" placeholder="Street" value="" required>
+        <input type="input" class="form-control" id="dest-address-street" name="order[recipient_street]" placeholder="Street" value="" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dest-address-building">Building*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dest-address-building" name="recipient[address][building_number]" placeholder="Building Number" value="" required>
+        <input type="input" class="form-control" id="dest-address-building" name="order[recipient_building_number]" placeholder="Building Number" value="" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="dest-address-additional">Additional Info:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="dest-address-additional" name="recipient[address][additional_info]" placeholder="Additional Info if any" value="">
+        <input type="input" class="form-control" id="dest-address-additional" name="order[recipient_additional_info]" placeholder="Additional Info if any" value="">
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="non-req-info-recipient-phone">Recipient Phone:</label>
       <div class="col-sm-4">
-        <input type="tel" class="form-control" id="non-req-info-recipient-phone" name="recipient[phone]" placeholder="Recipient Phone" value="">
+        <input type="tel" class="form-control" id="non-req-info-recipient-phone" name="order[recipient_phone]" placeholder="Recipient Phone" value="">
       </div>
     </div>
     <hr />
@@ -144,28 +120,28 @@
     <div class="row form-group">
       <label class="control-label col-sm-6" for="parcel-weight">Weight*:</label>
       <div class="col-sm-1">
-        <input type="number" class="form-control" id="parcel-weight" name="parcel[weight]" placeholder="1" value="" required>
+        <input type="number" class="form-control" id="parcel-weight" name="order[pkg_weight]" placeholder="1" value="" required>
       </div>
       <label class="control-label col-sm-1" for="parcel-weight">kg</label>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="parcel-width">Width*:</label>
       <div class="col-sm-1">
-        <input type="number" class="form-control" id="parcel-width" name="parcel[width]" placeholder="1" value="" required>
+        <input type="number" class="form-control" id="parcel-width" name="order[pkg_width]" placeholder="1" value="" required>
       </div>
       <label class="control-label col-sm-1" for="parcel-width">meters</label>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="parcel-height">Height*:</label>
       <div class="col-sm-1">
-        <input type="number" class="form-control" id="parcel-height" name="parcel[height]" placeholder="1" value="" required>
+        <input type="number" class="form-control" id="parcel-height" name="order[pkg_height]" placeholder="1" value="" required>
       </div>
       <label class="control-label col-sm-1" for="parcel-height">meters</label>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-6" for="parcel-length">Lenght*:</label>
       <div class="col-sm-1">
-        <input type="number" class="form-control" id="parcel-length" name="parcel[length]" placeholder="1" value="" required>
+        <input type="number" class="form-control" id="parcel-length" name="order[pkg_length]" placeholder="1" value="" required>
       </div>
       <label class="control-label col-sm-1" for="parcel-length">meters</label>
     </div>
