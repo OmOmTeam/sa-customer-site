@@ -54,7 +54,16 @@ router.get('/edit_account', function(req, res, next) {
 
 // Get method for /user/manage_orders
 router.get('/manage_orders', function(req, res, next) {
-  res.render('./user/manage_orders', { authorized: req.session.isActive });
+  req.app.db.model('User').findOne({where: {email: req.session.user}})
+    .then((user) => {
+      req.app.db.model('Order').findAll({where: {owner_id: user.id}})
+        .then((orders) => {
+          res.render('./user/manage_orders', {
+            authorized: req.session.isActive,
+            orders 
+          });
+        });
+    });
 });
 
 module.exports = router;
