@@ -8,41 +8,62 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      sender_id: {
+      owner_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: "People",
+          model: "Users",
           key: "id"
         },
         onDelete: "cascade",
         onUpdate: "cascade"
       },
-      receiver_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "People",
-          key: "id"
-        },
-        onDelete: "cascade",
-        onUpdate: "cascade"
+      sender_name: {
+        type: Sequelize.STRING
       },
-      sender_addr_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Addresses",
-          key: "id"
-        },
-        onDelete: "cascade",
-        onUpdate: "cascade"
+      sender_phone: {
+        type: Sequelize.STRING
       },
-      receiver_addr_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Addresses",
-          key: "id"
-        },
-        onDelete: "cascade",
-        onUpdate: "cascade"
+      sender_country: {
+        type: Sequelize.STRING
+      },
+      sender_region: {
+        type: Sequelize.STRING
+      },
+      sender_city: {
+        type: Sequelize.STRING
+      },
+      sender_street: {
+        type: Sequelize.STRING
+      },
+      sender_building_number: {
+        type: Sequelize.STRING
+      },
+      sender_additional_info: {
+        type: Sequelize.STRING
+      },
+      recipient_name: {
+        type: Sequelize.STRING
+      },
+      recipient_phone: {
+        type: Sequelize.STRING
+      },
+      recipient_country: {
+        type: Sequelize.STRING
+      },
+      recipient_region: {
+        type: Sequelize.STRING
+      },
+      recipient_city: {
+        type: Sequelize.STRING
+      },
+      recipient_street: {
+        type: Sequelize.STRING
+      },
+      recipient_building_number: {
+        type: Sequelize.STRING
+      },
+      recipient_additional_info: {
+        type: Sequelize.STRING
       },
       pkg_height: {
         type: Sequelize.FLOAT
@@ -50,7 +71,7 @@ module.exports = {
       pkg_length: {
         type: Sequelize.FLOAT
       },
-      pkg_wigth: {
+      pkg_width: {
         type: Sequelize.FLOAT
       },
       pkg_weight: {
@@ -60,6 +81,15 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       door_to_door: {
+        type: Sequelize.BOOLEAN
+      },
+      sms_notify: {
+        type: Sequelize.BOOLEAN
+      },
+      contents_list: {
+        type: Sequelize.BOOLEAN
+      },
+      letter: {
         type: Sequelize.BOOLEAN
       },
       createdAt: {
