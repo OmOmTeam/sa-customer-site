@@ -128,7 +128,7 @@
       <div class="col-sm-1">
         <input type="number" class="form-control" id="parcel-weight" name="order[pkg_weight]" placeholder="1" value="" required>
       </div>
-      <label class="control-label col-sm-1" for="parcel-weight">kg</label>
+      <label class="control-label col-sm-1 text-right" for="parcel-weight">kg</label>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-2 col-sm-offset-2" for="parcel-width">Width*:</label>
@@ -153,30 +153,34 @@
     </div>
     <hr />
     <div class="row text-center">
-      <h4>Delivery Details</h4>
+      <div class="col-sm-offset-2">
+        <h4>Delivery Details</h4>
+      </div>
     </div>
     <hr />
     <div class="row form-group">
-      <label class="control-label col-sm-6" for="delivery-type">Type*:</label>
+      <label class="control-label col-sm-2 col-sm-offset-2" for="delivery-type">Type*:</label>
       <div class="col-sm-4">
         <label class="radio-inline"><input type="radio" name="delivery[type]" value="normal" id="delivery-type-normal" checked>Normal</label>
         <label class="radio-inline"><input type="radio" name="delivery[type]" value="express" id="delivery-type-express">Express</label>
       </div>
     </div>
     <div class="row form-group">
-      <label class="control-label col-sm-6" for="delivery-type">Pickup from*:</label>
+      <label class="control-label col-sm-2 col-sm-offset-2" for="delivery-type">Pickup from*:</label>
       <div class="col-sm-4">
-        <label class="radio-inline"><input type="radio" name="delivery[pickup]" value="warehouse" id="delivery-pickup-warehouse" checked>Warehouse</label>
         <label class="radio-inline"><input type="radio" name="delivery[pickup]" value="building" id="delivery-pickup-building">Delivery to Building</label>
+        <label class="radio-inline"><input type="radio" name="delivery[pickup]" value="warehouse" id="delivery-pickup-warehouse" checked>Warehouse</label>
       </div>
     </div>
     <hr />
     <div class="row text-center">
-      <h4>Additional Services</h4>
+      <div class="col-sm-offset-2">
+        <h4>Additional Services</h4>
+      </div>
     </div>
     <hr />
     <div class="row form-group">
-      <div class="checkbox col-sm-offset-5 col-sm-6">
+      <div class="checkbox col-sm-offset-3 col-sm-6">
         <label><input type="checkbox" value="" id="add-services-sms" name="additional[sms]">SMS-notifications about delivery</label>
       </div>
     </div>
