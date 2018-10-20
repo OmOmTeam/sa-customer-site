@@ -1,4 +1,16 @@
 <% include components/header %>
+<script>
+function request_cancel($this){
+    console.log("button clicked");
+    var request_data = $this.id;
+    console.log("data: " + request_data)
+    alert("Your request for cancelling the order has been sent. Please, wait for your request being processed.")
+    $.post( "request_cancel",{ request_data: request_data},function(json) {
+         $("#request-cancel").hide();
+         console.log("requested cancel complete");
+    })
+}
+</script>
 
 <div class="container">
   <div style="padding-top: 50px" class="container text-center">
@@ -25,8 +37,8 @@
         <td><%= orders[i-1].recipient_country %></td>
         <td><%= orders[i-1].recipient_city %></td>
         <td>
-          <button type="button" class="btn btn-warning">Edit</button>
-          <button type="button" class="btn btn-danger">Cancel</button>
+          <button id="btn_edit" type="button" class="btn btn-warning">Edit</button>
+          <button id="btn_cancel" type="button" class="btn btn-danger" onclick="request_cancel(this)">Cancel</button>
         </td>
       </tr>
       <% } %>
