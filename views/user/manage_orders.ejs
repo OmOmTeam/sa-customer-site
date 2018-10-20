@@ -5,9 +5,13 @@ function request_cancel($this){
     var request_data = $this.id;
     console.log("data: " + request_data)
     alert("Your request for cancelling the order has been sent. Please, wait for your request being processed.")
-    $.post( "request_cancel",{ request_data: request_data},function(json) {
-         $("#request-cancel").hide();
-         console.log("requested cancel complete");
+    $.post({
+        url: "request_cancel",
+        data : { request_data: request_data},
+        success : function(json) {
+            $("#request-access").hide();
+            console.log("requested access complete");
+        }
     })
 }
 </script>
