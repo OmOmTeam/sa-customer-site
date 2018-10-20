@@ -9,7 +9,7 @@ a {
 
 /* Add a gray background color and some padding to the footer */
 footer {
-  padding: 25px;
+  padding-top: : 10px;
   background-color: #555;
   color: white;
 }
