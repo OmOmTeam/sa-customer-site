@@ -1,5 +1,14 @@
 <% include components/header %>
 
+<script>
+function send_feedback($this){
+    console.log("button clicked");
+    var request_data = $this.id;
+    console.log("data: " + request_data)
+    alert("Thank you for your feedback! It is very important to us.")
+}
+</script>
+
 <div style="padding-top: 50px" class="container text-center">
   <h3>Send Feedback</h3><br>
 </div><br>
@@ -25,7 +34,7 @@
  </div>
  <div class="form-group">
    <div class="col-sm-offset-5 col-sm-1">
-     <button type="submit" class="btn btn-success">Send</button>
+     <button id="send-feedback" type="submit" class="btn btn-success" onclick="send_feedback(this)">Send</button>
    </div>
  </div>
 </form>
