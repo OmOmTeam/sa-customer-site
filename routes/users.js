@@ -25,9 +25,28 @@ router.get('/create_order', function(req, res, next) {
     });
 });
 
-// Post method for /user/create_order
 router.post('/create_order', function(req, res, next) {
-  console.log(req.body.delivery);
+  let cost = (Math.random() * 9000 + 1000).toFixed(2);
+  res.render('./user/confirm_order', {
+    authorized: req.session.isActive,
+    order: req.body.order,
+    delivery: req.body.delivery,
+    additional: req.body.additional,
+    cost: cost
+  });
+});
+
+router.post('/create_order_back', function(req, res, next) {
+  res.render('./user/create_order_back', {
+    authorized: req.session.isActive,
+    order: req.body.order,
+    delivery: req.body.delivery,
+    additional: req.body.additional
+  });
+});
+
+// Post method for /user/create_order
+router.post('/confirm_order', function(req, res, next) {
   // Lookup for the user
   req.app.db.model('User').findOne({where: {email: req.session.user}})
     .then((user) => {
@@ -54,7 +73,6 @@ router.post('/create_order', function(req, res, next) {
         res.redirect('/user/manage_orders');
       });
     });
-
 });
 
 // Get method for /user/edit_account

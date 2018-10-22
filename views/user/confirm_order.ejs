@@ -1,0 +1,223 @@
+<% include components/header %>
+
+<div class="container">
+  <div style="padding-top: 80px" class="text-center">
+    <h3>Confirm Order</h3><br>
+    Check entered information and the price
+  </div><br>
+
+  <form style="padding-bottom: 30px" name="order-form" id="order-form" class="form-horizontal text-left" action="/user/confirm_order" method="post">
+    <hr />
+    <div class="row">
+      <div class="col-sm-offset-2">
+        <h4>Sender Info</h4>
+      </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="sender-name">Full Name*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="sender-name" name="order[sender_name]" placeholder="Your Full Name" value="<%= order.sender_name %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-country">Country*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-country" name="order[sender_country]" placeholder="Country" value="<%= order.sender_country %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-region">Region*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-region" name="order[sender_region]" placeholder="Region" value="<%= order.sender_region %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-city">City*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-city" name="order[sender_city]" placeholder="City" value="<%= order.sender_city %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-street">Street*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-street" name="order[sender_street]" placeholder="Street" value="<%= order.sender_street %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-building">Building*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-building" name="order[sender_building_number]" placeholder="Building Number" value="<%= order.sender_building_number %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-additional">Additional Info:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-additional" name="order[sender_additional_info]" placeholder="Additional Info if any" value="<%= order.sender_additional_info %>" readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="non-req-info-sender-phone">Your Phone:</label>
+      <div class="col-sm-4">
+        <input type="tel" class="form-control" id="non-req-info-sender-phone" name="order[sender_phone]" placeholder="Your Phone" value="<%= order.sender_phone %>" readonly>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm-offset-2">
+        <h4>Recipient Info</h4>
+      </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="recipient-name">Full Name*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="recipient-name" name="order[recipient_name]" placeholder="Recipient Full Name" value="<%= order.recipient_name %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="recipient-address-country">Country*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="recipient-address-country" name="order[recipient_country]" placeholder="Country" value="<%= order.recipient_country %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dest-address-region">Region*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-region" name="order[recipient_region]" placeholder="Region" value="<%= order.recipient_region %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dest-address-city">City*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-city" name="order[recipient_city]" placeholder="City" value="<%= order.recipient_city %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dest-address-street">Street*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-street" name="order[recipient_street]" placeholder="Street" value="<%= order.recipient_street %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dest-address-building">Building*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-building" name="order[recipient_building_number]" placeholder="Building Number" value="<%= order.recipient_building_number %>" required readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dest-address-additional">Additional Info:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dest-address-additional" name="order[recipient_additional_info]" placeholder="Additional Info if any" value="<%= order.recipient_additional_info %>" readonly>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="non-req-info-recipient-phone">Recipient Phone:</label>
+      <div class="col-sm-4">
+        <input type="tel" class="form-control" id="non-req-info-recipient-phone" name="order[recipient_phone]" placeholder="Recipient Phone" value="<%= order.recipient_phone %>" readonly>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm-offset-2">
+        <h4>Parcel Parameters</h4>
+      </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="parcel-weight">Weight*:</label>
+      <div class="col-sm-1">
+        <input type="number" class="form-control" id="parcel-weight" name="order[pkg_weight]" placeholder="1" value="<%= order.pkg_weight %>" required readonly>
+      </div>
+      <label class="control-label col-sm-1 text-left" for="parcel-weight">kg</label>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="parcel-width">Width*:</label>
+      <div class="col-sm-1">
+        <input type="number" class="form-control" id="parcel-width" name="order[pkg_width]" placeholder="1" value="<%= order.pkg_width %>" required readonly>
+      </div>
+      <label class="control-label col-sm-1" for="parcel-width">meters</label>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="parcel-height">Height*:</label>
+      <div class="col-sm-1">
+        <input type="number" class="form-control" id="parcel-height" name="order[pkg_height]" placeholder="1" value="<%= order.pkg_height %>" required readonly>
+      </div>
+      <label class="control-label col-sm-1" for="parcel-height">meters</label>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="parcel-length">Lenght*:</label>
+      <div class="col-sm-1">
+        <input type="number" class="form-control" id="parcel-length" name="order[pkg_length]" placeholder="1" value="<%= order.pkg_length %>" required readonly>
+      </div>
+      <label class="control-label col-sm-1" for="parcel-length">meters</label>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm-offset-2">
+        <h4>Delivery Details</h4>
+      </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="delivery-type">Type*:</label>
+      <div class="col-sm-4">
+        <% if (typeof(delivery.type) == 'string' && delivery.type == 'express') { %>
+          <label class="radio-inline"><input type="radio" name="delivery[type]" value="normal" id="delivery-type-normal" readonly onclick="return false;">Normal</label>
+          <label class="radio-inline"><input type="radio" name="delivery[type]" value="express" id="delivery-type-express" checked readonly onclick="return false;">Express</label>
+        <% } else { %>
+          <label class="radio-inline"><input type="radio" name="delivery[type]" value="normal" id="delivery-type-normal" checked readonly onclick="return false;">Normal</label>
+          <label class="radio-inline"><input type="radio" name="delivery[type]" value="express" id="delivery-type-express" readonly onclick="return false;">Express</label>
+        <% } %>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="delivery-type">Pickup from*:</label>
+      <div class="col-sm-4">
+        <% if (typeof(delivery.pickup) == 'string' && delivery.pickup == 'warehouse') { %>
+          <label class="radio-inline"><input type="radio" name="delivery[pickup]" value="building" id="delivery-pickup-building" readonly>Delivery to Building</label>
+          <label class="radio-inline"><input type="radio" name="delivery[pickup]" value="warehouse" id="delivery-pickup-warehouse" checked readonly>Warehouse</label>
+        <% } else { %>
+          <label class="radio-inline"><input type="radio" name="delivery[pickup]" value="building" id="delivery-pickup-building" checked readonly>Delivery to Building</label>
+          <label class="radio-inline"><input type="radio" name="delivery[pickup]" value="warehouse" id="delivery-pickup-warehouse" readonly>Warehouse</label>
+        <% } %>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm-offset-2">
+        <h4>Additional Services</h4>
+      </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <div class="checkbox col-sm-offset-4 col-sm-6">
+        <label><input type="checkbox" value="" id="add-services-sms" name="additional[sms]" <% if (Object.keys(additional).includes('sms')) { %>  checked <% } %> readonly onclick="return false;">SMS-notifications about delivery</label>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="checkbox col-sm-offset-4 col-sm-6">
+        <label><input type="checkbox" value="" id="add-services-letter" name="additional[letter]" <% if (Object.keys(additional).includes('letter')) { %>  checked <% } %> readonly onclick="return false;">Attached letter</label>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="checkbox col-sm-offset-4 col-sm-6">
+        <label><input type="checkbox" value="" id="add-services-contents" name="additional[contents]" <% if (Object.keys(additional).includes('contents')) { %>  checked <% } %> readonly onclick="return false;">List of contents signed by operator</label>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-sm-offset-2 col-md-5">
+        <h4>Total Cost: <b><%= cost %></b></h4>
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-danger" onclick="document.getElementById('order-form').action='/user/create_order_back'; document.getElementById('order-form').submit();">Edit Data</button>
+      </div>
+      <div class="col-md-1">
+        <button type="submit" class="btn btn-success">Confirm Order</button>
+      </div>
+    </div>
+    <hr />
+  </form>
+</div>
+<% include components/footer %>
