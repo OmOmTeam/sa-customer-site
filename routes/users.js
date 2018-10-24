@@ -106,9 +106,19 @@ router.get('/payment/:orderId', function(req, res, next) {
 
 // Get method for /user/payment_success
 router.get('/payment/:orderId/success', function(req, res, next) {
-  res.render('./user/payment_success', {
-     authorized: req.session.isActive
-   });
+  req.app.db.model('Order').findById(req.params.orderId)
+    .then((order) => {
+      if (order.payment_status == 'UNPAID') {
+        order.update({
+          payment_status: 'PAID'
+        })
+        .then((resp) => {
+          res.render('./user/payment_success', {
+            authorized: req.session.isActive
+          });
+        });
+      }
+    });
 });
 
 module.exports = router;
