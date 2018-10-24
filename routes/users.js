@@ -94,4 +94,21 @@ router.get('/manage_orders', function(req, res, next) {
     });
 });
 
+// Get method for /user/payment
+router.get('/payment/:orderId', function(req, res, next) {
+  let cost = (Math.random() * 9000 + 1000).toFixed(2);
+  res.render('./user/payment', {
+     authorized: req.session.isActive,
+     order_id: req.params.orderId,
+     cost
+   });
+});
+
+// Get method for /user/payment_success
+router.get('/payment/:orderId/success', function(req, res, next) {
+  res.render('./user/payment_success', {
+     authorized: req.session.isActive
+   });
+});
+
 module.exports = router;
