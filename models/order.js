@@ -26,7 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     door_to_door: DataTypes.BOOLEAN,
     sms_notify: DataTypes.BOOLEAN,
     contents_list: DataTypes.BOOLEAN,
-    letter: DataTypes.BOOLEAN
+    letter: DataTypes.BOOLEAN,
+    payment_status: DataTypes.STRING,
+    synchronized: DataTypes.BOOLEAN
   }, {});
   Order.associate = function(models) {
     // associations can be defined here
