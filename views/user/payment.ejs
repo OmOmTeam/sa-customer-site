@@ -1,0 +1,23 @@
+<% include components/header %>
+
+<div class="container">
+  <div style="padding-top: 80px" class="text-center">
+    <h3>Payment</h3><br>
+    You can pay for your order #<b><%=order_id %></b> online
+  </div>
+  <br>
+  <hr />
+  <div class="row">
+    <div class="col-sm-offset-2 col-md-5">
+      <h4>Total Cost: <b><%= cost %></b></h4>
+    </div>
+    <div class="col-md-1">
+      <a href="#" class="btn btn-danger">Go Back</a>
+    </div>
+    <div class="col-md-1">
+      <a href="#" class="btn btn-success">Go to Payment Service</a>
+    </div>
+  </div>
+  <hr />
+</div>
+<% include components/footer %>
