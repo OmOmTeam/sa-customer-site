@@ -4,23 +4,23 @@
   <h3>Calculate Approximate Cost</h3><br>
 </div><br>
 
-<form class="form-horizontal" action="/calculate_price" method="post">
+<form class="form-horizontal" action="/shipping_calculator" method="post">
  <div class="row form-group">
    <label class="control-label col-sm-offset-3 col-sm-2" for="weight">Package Weight in kg:</label>
    <div class="col-sm-3">
-     <input type="input" class="form-control" id="weight" placeholder="1">
+     <input type="input" class="form-control" id="weight" name="weight" placeholder="1" value="<%= weight %>">
    </div>
  </div>
  <div class="row form-group">
    <label class="control-label col-sm-offset-3 col-sm-2" for="from">From:</label>
    <div class="col-sm-3">
-     <input type="input" class="form-control" id="from" placeholder="Moscow">
+     <input type="input" class="form-control" id="from" name="from" placeholder="Moscow" value="<%= from %>">
    </div>
  </div>
  <div class="row form-group">
    <label class="control-label col-sm-offset-3 col-sm-2" for="to">To:</label>
    <div class="col-sm-3">
-     <input type="input" class="form-control" id="to" placeholder="Kazan">
+     <input type="input" class="form-control" id="to" name="to" placeholder="Kazan" value="<%= to %>">
    </div>
  </div>
  <div class="row form-group">
@@ -29,6 +29,14 @@
    </div>
  </div>
 </form>
+
+<hr>
+<% if (price) {%>
+  <div style="padding-top: 80px" class="text-center">
+    <h4>Estimated price: <b><%= price %></b></h4> 
+  </div>
+  <hr>
+<% } %>
 
 <footer style="position: absolute; bottom: 0; width: 100%;" class="container text-center">
   <p>ACME Inc.</p>

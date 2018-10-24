@@ -20,7 +20,25 @@ router.get('/company_news', function(req, res, next) {
 
 // Define GET method for root part
 router.get('/shipping_calculator', function(req, res, next) {
-  res.render('./public_info/shipping_calculator', { authorized: req.session.isActive });
+  res.render('./public_info/shipping_calculator', {
+    authorized: req.session.isActive,
+    price: false,
+    from: '',
+    to: '',
+    weight: 0
+  });
+});
+
+// Define GET method for root part
+router.post('/shipping_calculator', function(req, res, next) {
+  let cost = (Math.random() * 9000 + 1000).toFixed(2);
+  res.render('./public_info/shipping_calculator', {
+    authorized: req.session.isActive,
+    price: cost,
+    from: req.body.from,
+    to: req.body.to,
+    weight: req.body.weight
+  });
 });
 
 // Define GET method for root part

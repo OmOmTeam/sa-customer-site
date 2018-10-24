@@ -29,6 +29,7 @@ function request_cancel($this){
         <th>Recepient Name</th>
         <th>Destination Country</th>
         <th>Destination City</th>
+        <th>Payment Status</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -40,6 +41,7 @@ function request_cancel($this){
         <td><%= orders[i-1].recipient_name %></td>
         <td><%= orders[i-1].recipient_country %></td>
         <td><%= orders[i-1].recipient_city %></td>
+        <td><%= orders[i-1].payment_status %></td>
         <td>
           <button id="btn_edit" type="button" class="btn btn-warning">Edit</button>
           <button id="btn_cancel" type="button" class="btn btn-danger" onclick="request_cancel(this)">Cancel</button>
