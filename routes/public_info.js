@@ -62,6 +62,15 @@ router.get('/support_feedback', function(req, res, next) {
 });
 
 // Define GET method for root part
+router.post('/support_feedback', function(req, res, next) {
+  req.app.db.model('Feedback').create({
+    ...req.body
+  }).then(() => {
+    res.render('./public_info/support_feedback', { authorized: req.session.isActive });
+  });
+});
+
+// Define GET method for root part
 router.get('/support_callback', function(req, res, next) {
   res.render('./public_info/support_callback', { authorized: req.session.isActive });
 });
