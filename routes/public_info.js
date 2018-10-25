@@ -66,6 +66,16 @@ router.get('/support_callback', function(req, res, next) {
   res.render('./public_info/support_callback', { authorized: req.session.isActive });
 });
 
+// Define GET method for root part
+router.post('/support_callback', function(req, res, next) {
+  req.app.db.model('CallbackRequest').create({
+    name: req.body.name,
+    phone: req.body.phone
+  }).then(() => {
+    res.redirect('/');
+  });
+});
+
 router.get('/login', function(req, res, next) {
   res.render('./public_info/login', { authorized: req.session.isActive });
 });
