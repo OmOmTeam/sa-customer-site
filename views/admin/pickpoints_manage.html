@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Panel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand active" href="index.html">
+        <img alt="Brand" src="img/logo2.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customer Site<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="site_info_edit.html">Edit Info</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">News<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="news_add.html">Add</a></li>
+            <li><a href="news_manage.html">Manage</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pickpoints<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="pickpoints_add.html">Add</a></li>
+            <li><a href="pickpoints_manage.html">Manage</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="log_in.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div style="padding-top: 80px" class="container text-center">
+    <h3>Manage Pickpoints</h3><br>
+  </div><br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Schedule</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>100001</th>
+        <td>Russia</td>
+        <td>Moscow</td>
+        <td>Lenin Str. 1</td>
+        <td>Mon-Fr 9 am - 7 pm</td>
+        <td>
+          <button type="button" class="btn btn-warning">Edit</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <th>100002</th>
+        <td>Great Britain</td>
+        <td>London</td>
+        <td>Oxford Str. 10</td>
+        <td>Mon-Fr 10 am - 5 pm</td>
+        <td>
+          <button type="button" class="btn btn-warning">Edit</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <th>100003</th>
+        <td>Germany</td>
+        <td>Berlin</td>
+        <td>Blumen Str. 5</td>
+        <td>Mon-Fr 9 am - 6 pm</td>
+        <td>
+          <button type="button" class="btn btn-warning">Edit</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <th>100004</th>
+        <td>France</td>
+        <td>Paris</td>
+        <td>Revolution Str. 25</td>
+        <td>Mon-Fr 11 am - 9 pm</td>
+        <td>
+          <button type="button" class="btn btn-warning">Edit</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<footer style="position: absolute; bottom: 0; width: 100%;" class="container text-center">
+  <p>ACME Inc.</p>
+  <p>2000 - 2018 </p>
+</footer>
+
+</body>
+</html>

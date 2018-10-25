@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Panel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand active" href="index.html">
+        <img alt="Brand" src="/img/logo2.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container text-center" style="padding-top: 100px">
+  <h3>Log in</h3><br>
+</div><br>
+
+<form class="form-horizontal" action="index.html">
+ <div class="form-group">
+   <label class="control-label col-sm-offset-3 col-sm-2" for="id">Id:</label>
+   <div class="col-sm-3">
+     <input type="input" class="form-control" id="id" placeholder="Enter id">
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="control-label col-sm-offset-3 col-sm-2" for="pwd">Password:</label>
+   <div class="col-sm-3">
+     <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+   </div>
+ </div>
+ <div class="form-group">
+   <div class="col-sm-offset-5 col-sm-1">
+     <button type="submit" class="btn btn-success">Log in</button>
+   </div>
+ </div>
+</form>
+<footer style="position: absolute; bottom: 0; width: 100%;" class="container text-center">
+  <p>ACME Inc.</p>
+  <p>2000 - 2018 </p>
+</footer>
+
+</body>
+</html>

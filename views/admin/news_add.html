@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Panel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand active" href="index.html">
+        <img alt="Brand" src="img/logo2.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customer Site<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="site_info_edit.html">Edit Info</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">News<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="news_add.html">Add</a></li>
+            <li><a href="news_manage.html">Manage</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pickpoints<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="pickpoints_add.html">Add</a></li>
+            <li><a href="pickpoints_manage.html">Manage</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="log_in.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div style="padding-top: 80px;" class="container text-center">
+    <h3>Add News</h3><br>
+  </div><br>
+  <form class="form-horizontal" action="#" method="post" style="padding-bottom: 30px">
+   <div class="form-group">
+     <label class="control-label col-sm-offset-3 col-sm-2" for="name">Name:</label>
+     <div class="col-sm-3">
+       <input type="input" class="form-control" id="name" placeholder="News Name">
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="control-label col-sm-offset-3 col-sm-2" for="brief-desc">Brief Description:</label>
+     <div class="col-sm-3">
+       <input type="input" class="form-control" id="brief-desc" placeholder="Brief Description">
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="control-label col-sm-offset-3 col-sm-2" for="full-desc">Full Description:</label>
+     <div class="col-sm-3">
+       <textarea class="form-control" rows="7" id="full-desc"></textarea>
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="control-label col-sm-offset-3 col-sm-2" for="address">Upload Image:</label>
+     <div class="col-sm-offset-1 col-sm-1">
+			    <input type="file" name="image"/>
+			</div>
+   </div>
+   <div class="form-group">
+     <div class="col-sm-offset-5 col-sm-1">
+       <button type="submit" class="btn btn-success">Add</button>
+     </div>
+   </div>
+  </form>
+
+</div>
+
+
+<footer class="footer navbar-fixed-bottom text-center">
+  <p>ACME Inc.</p>
+  <p>2000 - 2018 </p>
+</footer>
+
+</body>
+</html>
