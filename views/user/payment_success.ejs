@@ -19,27 +19,27 @@ function payment_success($this){
   <hr />
   <form class="form-horizontal">
    <div class="row form-group">
-     <label class="control-label col-sm-offset-3 col-sm-2" for="card_number">Card number:</label>
+     <label class="control-label col-sm-offset-3 col-sm-2" for="card_number">Card number*:</label>
      <div class="col-sm-3">
-       <input type="input" class="form-control" id="card_number" name="card_number" placeholder="1234567890123456">
+       <input type="input" class="form-control" id="card_number" name="card_number" placeholder="1234567890123456" required>
      </div>
    </div>
    <div class="row form-group">
-     <label class="control-label col-sm-offset-3 col-sm-2" for="card_name">Cardholder Name:</label>
+     <label class="control-label col-sm-offset-3 col-sm-2" for="card_name">Cardholder Name*:</label>
      <div class="col-sm-3">
-       <input type="input" class="form-control" id="card_name" name="card_name" placeholder="Ivan Ivanov">
+       <input type="input" class="form-control" id="card_name" name="card_name" placeholder="Ivan Ivanov" required>
      </div>
    </div>
    <div class="row form-group">
-     <label class="control-label col-sm-offset-3 col-sm-2" for="card_expiry">Expiry date:</label>
+     <label class="control-label col-sm-offset-3 col-sm-2" for="card_expiry">Expiry date*:</label>
      <div class="col-sm-3">
-       <input type="input" class="form-control" id="card_expiry" name="card_expiry" placeholder="12/21">
+       <input type="input" class="form-control" id="card_expiry" name="card_expiry" placeholder="12/21" required>
      </div>
    </div>
    <div class="row form-group">
-     <label class="control-label col-sm-offset-3 col-sm-2" for="card_cvc">CVC:</label>
+     <label class="control-label col-sm-offset-3 col-sm-2" for="card_cvc">CVC*:</label>
      <div class="col-sm-3">
-       <input type="password" class="form-control" id="card_cvc" name="card_cvc">
+       <input type="password" class="form-control" id="card_cvc" name="card_cvc" required>
      </div>
    </div>
   </form>
