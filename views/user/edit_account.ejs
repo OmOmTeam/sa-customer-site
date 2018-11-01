@@ -1,0 +1,52 @@
+<% include components/header %>
+
+<div class="container">
+  <div style="padding-top: 80px" class="text-center">
+    <h3>Edit Account</h3><br>
+  </div><br>
+
+  <form style="padding-bottom: 30px" class="form-horizontal text-left" action="/user/edit_account" method="post">
+    <hr />
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="edit-name">Name*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="edit-name" name="edit[_name]" placeholder="Your Name" value="<%= user.first_name %>" required>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="edit-patronymic">Patronymic:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="edit-patronymic" name="edit[patronymic]" placeholder="Your Patronymic" value="<%= user.patronymic %>">
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="edit-surname">Surname*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="edit-surname" name="edit[surname]" placeholder="Your Surname" value="<%= user.last_name %>" required>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="edit-email">Email*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="edit-email" name="edit[email]" placeholder="Your Email" value="<%= user.email %>" required>
+      </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <button type="submit" class="btn btn-success center-block">Edit Info</button>
+    </div>
+  </form>
+  
+  <form style="padding-bottom: 30px" class="form-horizontal text-left" action="/user/delete_account" method="post">
+    <hr />
+    <div class="row form-group">
+      <div class="col-sm-4">
+        <h5>Do you want to delete your account?</h5>
+      </div>
+    </div>
+    <div class="row form-group">
+      <button type="submit" class="btn btn-danger center-block">Delete Account</button>
+    </div>
+  </form>
+</div>
+<% include components/footer %>
