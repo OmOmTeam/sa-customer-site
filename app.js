@@ -11,6 +11,7 @@ var session = require('./lib/session');
 
 // Routes
 var usersRouter = require('./routes/users');
+var adminsRouter = require('./routes/admin');
 var publicInfoRouter = require('./routes/public_info');
 
 // Database
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes setup
 app.use('/', publicInfoRouter);
 app.use('/user', usersRouter);
+app.use('/admin', adminsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
