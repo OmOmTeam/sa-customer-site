@@ -4,12 +4,17 @@ var router = express.Router();
 var helpers = require('../lib/helpers');
 
 router.use(function(req, res, next) {
-req.app.db.model('User').findOne({where: {email: req.session.user}})
-  .then((user) => {
-    req.session.isAdmin = user.is_admin
+  if (req.session.isActive) {
+    req.app.db.model('User').findOne({where: {email: req.session.user}})
+    .then((user) => {
+      req.session.isAdmin = user.is_admin
+      next();
+      console.log(req.session);
+    });
+  } else {
+    req.session.isAdmin = false;
     next();
-    console.log(req.session);
-  });
+  }
 });
 
 // Define GET method for root part
