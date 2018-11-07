@@ -5,38 +5,100 @@
     <h3>Edit Account</h3><br>
   </div><br>
 
+  <% if (success_message) { %>
+    <div style="color: #026340" class="text-center">
+      <h4>Successfully updated</h4><br>
+    </div><br>
+  <% } %>
+
   <form style="padding-bottom: 30px" class="form-horizontal text-left" action="/user/edit_account" method="post">
+    <hr />
+    <div class="row">
+      <div class="col-sm-offset-2">
+        <h4>Personal Info</h4>
+      </div>
+    </div>
     <hr />
     <div class="row form-group">
       <label class="control-label col-sm-2 col-sm-offset-2" for="edit-name">Name*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="edit-name" name="edit[_name]" placeholder="Your Name" value="<%= user.first_name %>" required>
+        <input type="input" class="form-control" id="edit-name" name="user[first_name]" placeholder="Your Name" value="<%= user.first_name %>" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-2 col-sm-offset-2" for="edit-patronymic">Patronymic:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="edit-patronymic" name="edit[patronymic]" placeholder="Your Patronymic" value="<%= user.patronymic %>">
+        <input type="input" class="form-control" id="edit-patronymic" name="user[patronymic]" placeholder="Your Patronymic" value="<%= user.patronymic %>">
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-2 col-sm-offset-2" for="edit-surname">Surname*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="edit-surname" name="edit[surname]" placeholder="Your Surname" value="<%= user.last_name %>" required>
+        <input type="input" class="form-control" id="edit-surname" name="user[last_name]" placeholder="Your Surname" value="<%= user.last_name %>" required>
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-sm-2 col-sm-offset-2" for="edit-email">Email*:</label>
       <div class="col-sm-4">
-        <input type="input" class="form-control" id="edit-email" name="edit[email]" placeholder="Your Email" value="<%= user.email %>" required>
+        <input type="input" class="form-control" id="edit-email" name="user[email]" placeholder="Your Email" value="<%= user.email %>" required>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="non-req-info-sender-phone">Your Phone:</label>
+      <div class="col-sm-4">
+        <input type="tel" class="form-control" id="non-req-info-sender-phone" name="user[phone]" placeholder="Your Phone" value="<%= user.phone %>">
+      </div>
+    </div>
+
+    <hr />
+    <div class="row">
+      <div class="col-sm-offset-2">
+        <h4>Address</h4>
       </div>
     </div>
     <hr />
     <div class="row form-group">
-      <button type="submit" class="btn btn-success center-block">Edit Info</button>
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-country">Country*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-country" name="user[country]" placeholder="Country" value="<%= user.country %>" required>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-region">Region*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-region" name="user[region]" placeholder="Region" value="<%= user.region %>" required>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-city">City*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-city" name="user[city]" placeholder="City" value="<%= user.city %>" required>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-street">Street*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-street" name="user[street]" placeholder="Street" value="<%= user.street %>" required>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-building">Building*:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-building" name="user[building_number]" placeholder="Building Number" value="<%= user.building_number %>" required>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2 col-sm-offset-2" for="dispatch-address-additional">Additional Info:</label>
+      <div class="col-sm-4">
+        <input type="input" class="form-control" id="dispatch-address-additional" name="user[additional_info]" placeholder="Additional Info if any" value="<%= user.additional_info %>">
+      </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+      <button type="submit" class="btn btn-success center-block">Save</button>
     </div>
   </form>
-  
+
   <form style="padding-bottom: 30px" class="form-horizontal text-left" action="/user/delete_account" method="post">
     <hr />
     <div class="row form-group">

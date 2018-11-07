@@ -77,7 +77,36 @@ router.post('/confirm_order', function(req, res, next) {
 
 // Get method for /user/edit_account
 router.get('/edit_account', function(req, res, next) {
-  res.render('./user/edit_account', { authorized: req.session.isActive });
+  // Lookup for the user
+  req.app.db.model('User').findOne({where: {email: req.session.user}})
+    .then((user) => {
+      // Lookup for user's personal info
+      res.render('./user/edit_account', {
+        authorized: req.session.isActive,
+        success_message: false,
+        user
+      });
+    });
+});
+
+// Post method for /user/edit_account
+router.post('/edit_account', function(req, res, next) {
+  console.log(req.body);
+  // Lookup for the user
+  req.app.db.model('User').findOne({where: {email: req.session.user}})
+    .then((user) => {
+      // Lookup for user's personal info
+      user.update(req.body.user).then(() => {
+        res.render('./user/edit_account', {
+          authorized: req.session.isActive,
+          success_message: true,
+          user
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    });
 });
 
 // Get method for /user/manage_orders
