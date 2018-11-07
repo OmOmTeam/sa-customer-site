@@ -91,7 +91,6 @@ router.get('/edit_account', function(req, res, next) {
 
 // Post method for /user/edit_account
 router.post('/edit_account', function(req, res, next) {
-  console.log(req.body);
   // Lookup for the user
   req.app.db.model('User').findOne({where: {email: req.session.user}})
     .then((user) => {
@@ -107,6 +106,24 @@ router.post('/edit_account', function(req, res, next) {
         console.log(err);
       })
     });
+});
+
+router.get('/delete_account', function(req, res, next) {
+  res.render('./user/delete_account_confirmation', { authorized: req.session.isActive });
+});
+
+router.get('/delete_account/confirm', function(req, res, next) {req.app.db.model('User').findOne({where: {email: req.session.user}})
+  .then((user) => {
+    // Lookup for user's personal info
+    user.destroy().then(() => {
+      res.clearCookie('token');
+      res.clearCookie('user')
+      res.redirect('/');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  });
 });
 
 // Get method for /user/manage_orders
