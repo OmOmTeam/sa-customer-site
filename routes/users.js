@@ -9,7 +9,7 @@ var router = express.Router();
 
 // Get method for /user/
 router.get('/', function(req, res, next) {
-  res.render('./user/index', { authorized: req.session.isActive });
+  res.render('./user/index', { ...req.session });
 });
 
 // Get method for /user/create_order
@@ -19,7 +19,7 @@ router.get('/create_order', function(req, res, next) {
     .then((user) => {
       // Lookup for user's personal info
       res.render('./user/create_order', {
-        authorized: req.session.isActive,
+        ...req.session,
         user
       });
     });
@@ -28,7 +28,7 @@ router.get('/create_order', function(req, res, next) {
 router.post('/create_order', function(req, res, next) {
   let cost = (Math.random() * 9000 + 1000).toFixed(2);
   res.render('./user/confirm_order', {
-    authorized: req.session.isActive,
+    ...req.session,
     order: req.body.order,
     delivery: req.body.delivery,
     additional: req.body.additional,
@@ -38,7 +38,7 @@ router.post('/create_order', function(req, res, next) {
 
 router.post('/create_order_back', function(req, res, next) {
   res.render('./user/create_order_back', {
-    authorized: req.session.isActive,
+    ...req.session,
     order: req.body.order,
     delivery: req.body.delivery,
     additional: req.body.additional
@@ -82,7 +82,7 @@ router.get('/edit_account', function(req, res, next) {
     .then((user) => {
       // Lookup for user's personal info
       res.render('./user/edit_account', {
-        authorized: req.session.isActive,
+        ...req.session,
         success_message: false,
         user
       });
@@ -97,7 +97,7 @@ router.post('/edit_account', function(req, res, next) {
       // Lookup for user's personal info
       user.update(req.body.user).then(() => {
         res.render('./user/edit_account', {
-          authorized: req.session.isActive,
+          ...req.session,
           success_message: true,
           user
         });
@@ -109,7 +109,7 @@ router.post('/edit_account', function(req, res, next) {
 });
 
 router.get('/delete_account', function(req, res, next) {
-  res.render('./user/delete_account_confirmation', { authorized: req.session.isActive });
+  res.render('./user/delete_account_confirmation', { ...req.session });
 });
 
 router.get('/delete_account/confirm', function(req, res, next) {req.app.db.model('User').findOne({where: {email: req.session.user}})
@@ -133,7 +133,7 @@ router.get('/manage_orders', function(req, res, next) {
       req.app.db.model('Order').findAll({where: {owner_id: user.id}})
         .then((orders) => {
           res.render('./user/manage_orders', {
-            authorized: req.session.isActive,
+            ...req.session,
             orders
           });
         });
@@ -144,7 +144,7 @@ router.get('/manage_orders', function(req, res, next) {
 router.get('/payment/:orderId', function(req, res, next) {
   let cost = (Math.random() * 9000 + 1000).toFixed(2);
   res.render('./user/payment', {
-     authorized: req.session.isActive,
+     ...req.session,
      order_id: req.params.orderId,
      cost
    });
@@ -160,7 +160,7 @@ router.get('/payment/:orderId/success', function(req, res, next) {
         })
         .then((resp) => {
           res.render('./user/payment_success', {
-            authorized: req.session.isActive
+            ...req.session
           });
         });
       }

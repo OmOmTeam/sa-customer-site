@@ -3,25 +3,34 @@ var router = express.Router();
 
 var helpers = require('../lib/helpers');
 
+router.use(function(req, res, next) {
+req.app.db.model('User').findOne({where: {email: req.session.user}})
+  .then((user) => {
+    req.session.isAdmin = user.is_admin
+    next();
+    console.log(req.session);
+  });
+});
+
 // Define GET method for root part
 router.get('/', function(req, res, next) {
-  res.render('./public_info/index', { authorized: req.session.isActive });
+  res.render('./public_info/index', { ...req.session });
 });
 
 // Define GET method for root part
 router.get('/company_about', function(req, res, next) {
-  res.render('./public_info/company_about', { authorized: req.session.isActive });
+  res.render('./public_info/company_about', { ...req.session });
 });
 
 // Define GET method for root part
 router.get('/company_news', function(req, res, next) {
-  res.render('./public_info/company_news', { authorized: req.session.isActive });
+  res.render('./public_info/company_news', { ...req.session });
 });
 
 // Define GET method for root part
 router.get('/shipping_calculator', function(req, res, next) {
   res.render('./public_info/shipping_calculator', {
-    authorized: req.session.isActive,
+    ...req.session,
     price: false,
     from: '',
     to: '',
@@ -33,7 +42,7 @@ router.get('/shipping_calculator', function(req, res, next) {
 router.post('/shipping_calculator', function(req, res, next) {
   let cost = (Math.random() * 9000 + 1000).toFixed(2);
   res.render('./public_info/shipping_calculator', {
-    authorized: req.session.isActive,
+    ...req.session,
     price: cost,
     from: req.body.from,
     to: req.body.to,
@@ -43,22 +52,22 @@ router.post('/shipping_calculator', function(req, res, next) {
 
 // Define GET method for root part
 router.get('/shipping_info', function(req, res, next) {
-  res.render('./public_info/shipping_info', { authorized: req.session.isActive });
+  res.render('./public_info/shipping_info', { ...req.session });
 });
 
 // Define GET method for root part
 router.get('/shipping_prices', function(req, res, next) {
-  res.render('./public_info/shipping_prices', { authorized: req.session.isActive });
+  res.render('./public_info/shipping_prices', { ...req.session });
 });
 
 // Define GET method for root part
 router.get('/support_contact', function(req, res, next) {
-  res.render('./public_info/support_contact', { authorized: req.session.isActive });
+  res.render('./public_info/support_contact', { ...req.session });
 });
 
 // Define GET method for root part
 router.get('/support_feedback', function(req, res, next) {
-  res.render('./public_info/support_feedback', { authorized: req.session.isActive });
+  res.render('./public_info/support_feedback', { ...req.session });
 });
 
 // Define GET method for root part
@@ -66,13 +75,13 @@ router.post('/support_feedback', function(req, res, next) {
   req.app.db.model('Feedback').create({
     ...req.body
   }).then(() => {
-    res.render('./public_info/support_feedback', { authorized: req.session.isActive });
+    res.render('./public_info/support_feedback', { ...req.session });
   });
 });
 
 // Define GET method for root part
 router.get('/support_callback', function(req, res, next) {
-  res.render('./public_info/support_callback', { authorized: req.session.isActive });
+  res.render('./public_info/support_callback', { ...req.session });
 });
 
 // Define GET method for root part
@@ -86,7 +95,7 @@ router.post('/support_callback', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('./public_info/login', { authorized: req.session.isActive });
+  res.render('./public_info/login', { ...req.session });
 });
 
 // TODO: Use JWT?
@@ -169,7 +178,7 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.get('/tracking', function(req, res, next) {
-  res.render('./public_info/tracking', { authorized: req.session.isActive });
+  res.render('./public_info/tracking', { ...req.session });
 });
 
 router.get('/test_login', function(req, res, next) {

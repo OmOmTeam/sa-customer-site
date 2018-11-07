@@ -54,7 +54,7 @@
             </ul>
           </li>
         </ul>
-        <% if (typeof(authorized) == 'boolean' && authorized) { %>
+        <% if (typeof(isActive) == 'boolean' && isActive) { %>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> My Account<span class="caret"></span></a>
@@ -62,6 +62,10 @@
                 <li><a href="/user/create_order">Create Order</a></li>
                 <li><a href="/user/manage_orders">Manage Orders</a></li>
                 <li><a href="/user/edit_account">Edti Account</a></li>
+                <% if (typeof(isAdmin) == 'boolean' && isAdmin) { %>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="/admin">Admin Panel</a></li>
+                <% } %>
                 <li role="separator" class="divider"></li>
                 <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               </ul>
