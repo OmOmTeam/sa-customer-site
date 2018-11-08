@@ -1,0 +1,42 @@
+<% include components/header_loggedin %>
+
+
+<script>
+function update_info($this){
+    console.log("button clicked");
+    var request_data = $this.id;
+    console.log("data: " + request_data)
+    alert("Contact info was updated!")
+}
+</script>
+
+<div style="padding-top: 50px" class="container text-center">
+  <h3>Edit Company About Info</h3><br>
+</div><br>
+
+<form class="form-horizontal" action="#" method="post">
+ <div class="row form-group">
+   <label class="control-label col-sm-offset-3 col-sm-3" for="support-contact-value">Contact type*:</label>
+   <div class="col-sm-3">
+     <select class="form-control" id="support-contact-value" name="support-contact-value">
+      <option>Phone</option>
+      <option>Email</option>
+      <option>Address</option>
+    </select>
+   </div>
+ </div>
+ <div class="row form-group">
+   <label class="control-label col-sm-offset-3 col-sm-3" for="support-contact-value">New value*:</label>
+   <div class="col-sm-3">
+     <input type="input" class="form-control" id="support-contact-value" name="support-contact-value" required>
+   </div>
+ </div>
+ <div class="row form-group">
+   <div class="col-sm-offset-5 col-sm-1">
+     <button id="send-feedback" type="submit" class="btn btn-success" onclick="update_info(this)">Update</button>
+   </div>
+ </div>
+</form>
+
+
+<% include components/footer %>

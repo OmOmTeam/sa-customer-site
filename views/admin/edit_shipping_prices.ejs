@@ -1,0 +1,65 @@
+<% include components/header_loggedin %>
+
+
+<script>
+function update_info($this){
+    console.log("button clicked");
+    var request_data = $this.id;
+    console.log("data: " + request_data)
+    alert("Contact info was updated!")
+}
+</script>
+
+<div style="padding-top: 50px" class="container text-center">
+  <h3>Edit Company About Info</h3><br>
+</div><br>
+
+<form class="form-horizontal" action="#" method="post">
+ <div class="row form-group">
+   <label class="control-label col-sm-offset-3 col-sm-3" for="shipping-prices-dest">Destination*:</label>
+   <div class="col-sm-3">
+     <select class="form-control" id="shipping-prices-dest" name="shipping-prices-dest">
+      <option>Russia</option>
+      <option>USA</option>
+      <option>Asia</option>
+    </select>
+   </div>
+ </div>
+ <div class="row form-group">
+   <label class="control-label col-sm-offset-3 col-sm-3" for="shipping-prices-weight">Weight*:</label>
+   <div class="col-sm-3">
+     <select class="form-control" id="shipping-prices-weight" name="shipping-prices-weight">
+      <option>0.1-1 kg</option>
+      <option>1-10 kg</option>
+      <option>10-50 kg</option>
+    </select>
+   </div>
+ </div>
+ <div class="row form-group">
+   <label class="control-label col-sm-offset-3 col-sm-3" for="shipping-prices-orig">Origin*:</label>
+   <div class="col-sm-3">
+     <select class="form-control" id="shipping-prices-orig" name="shipping-prices-orig">
+      <option>Europe</option>
+      <option>Asia</option>
+    </select>
+   </div>
+ </div>
+ <div class="row form-group">
+   <label class="control-label col-sm-offset-3 col-sm-3" for="shipping-prices-price">Price*:</label>
+   <div class="col-sm-3">
+     <select class="form-control" id="shipping-prices-price" name="shipping-prices-price">
+      <option>10 USD</option>
+      <option>100 USD</option>
+      <option>300 USD</option>
+    </select>
+   </div>
+ </div>
+ <div class="row form-group">
+   <div class="col-sm-offset-5 col-sm-1">
+     <button id="send-feedback" type="submit" class="btn btn-success" onclick="update_info(this)">Update</button>
+   </div>
+ </div>
+</form>
+
+
+<% include components/footer %>
