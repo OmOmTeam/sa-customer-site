@@ -186,6 +186,10 @@ router.get('/tracking', function(req, res, next) {
   res.render('./public_info/tracking', { ...req.session });
 });
 
+router.get('/track', function(req, res, next) {
+  res.render('./public_info/tracking2', { ...req.session });
+});
+
 router.get('/test_login', function(req, res, next) {
   // If token exists
   if (req.session.isActive) {
